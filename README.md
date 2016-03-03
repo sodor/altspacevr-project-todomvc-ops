@@ -10,7 +10,7 @@ hashing for better horizontal scaling, but for non-obvious reasons
 that turns out to be not supported by free nginx). The webapps
 themselves are hard wired to a master PostgreSQL database on
 'pg1'. This, in turn, is also being stream replicated to a (readonly)
-hotspare. Each server propgates it's service availability using
+hotspare. Each server propagates it's service availability using
 Consul, whose DNS API is being used by nginx to route to the available
 webapps. The first server of each type acts as a Consul server for the
 consensus protocol, and the web ui for Consul is available on the
@@ -27,7 +27,7 @@ $ vagrant up
 ```
 
 ## Things To Try:
-* The TodoMVC app - http://1921.68.11.21 (or any other LB IP like: .22).
+* The TodoMVC app - http://192.168.11.21 (or any other LB IP like: .22).
 * Consul service discovery/health UI - http://192.168.11.5:8500/ui
 * Stopping a webapp:
 ```
@@ -60,7 +60,7 @@ In proximate order of doing:
 * Stream syslogs back to adm server.
 * Schedule DB dumps and ship offsite.
 * Setup collectd on adm server, and agents on all nodes.
-* Seperate webapp into it's own layer, and use gunicorn or similar instead of the built in django one.
+* Separate webapp into it's own layer, and use gunicorn or similar instead of the built in django one.
 * Switch to LXC and use at least two physical machines (one for each set of admN,nginxN,webN,pgN).
 * Debian repo for private packages (eg: consul, todomvc).
 * Jenkins to publish code changes into the repo and onto a staging environment.
@@ -89,9 +89,9 @@ out the generally accepted way to package it. I'd read previously
 that, like Perl (big fan!), Ruby had many niceties (a first order
 regex operator!). Unfortunately, from an ops perspective, it wasn't
 working out for a quick project like this. So in the interests of
-time, I (regretably?) switched to Python.
+time, I (regrettably?) switched to Python.
 
-Vagrant really impressed me. I think it's core usefullness is making
+Vagrant really impressed me. I think it's core usefulness is making
 "system architecturing" a more dev-like experience. I can see that
 being able to simply describe a set of systems in a config file makes
 it easier for non-traditional ops people (aka devs) to discover and
@@ -124,7 +124,7 @@ the webapp, so that it could auto-reconnect to an available postgres
 database. Usually, I would bake the failover logic into the db client
 application. With outside knowledge from the application of what it's
 trying to do, you can usually make faster and more resilient failover
-descisions. Using Consul for service discovery would've made that a
+decisions. Using Consul for service discovery would've made that a
 lot easier and safer to coordinate. The more traditional middleware
 layer (eg: pgpool, pgbouncer), adds extra complexity right in the
 middle of what should be one of the least latent and most reliable
