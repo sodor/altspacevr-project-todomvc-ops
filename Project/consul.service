@@ -1,0 +1,14 @@
+[Unit]
+Description=consul distributed service discovery server
+After=network.target
+
+[Service]
+User=vagrant
+EnvironmentFile=/etc/default/consul
+ExecStart=/usr/local/bin/consul $CONSUL_ARGS -data-dir=${CONSUL_DATA} -config-dir=${CONSUL_CONFD} -bind=${CONSUL_BIND}
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

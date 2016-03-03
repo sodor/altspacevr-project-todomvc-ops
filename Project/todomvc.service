@@ -1,0 +1,13 @@
+[Unit]
+Description=todomvc example webapp
+After=network.target
+
+[Service]
+User=vagrant
+ExecStart=/vagrant/todomvc/manage.py runserver 0.0.0.0:8000
+KillMode=mixed
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
