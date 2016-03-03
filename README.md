@@ -26,7 +26,7 @@ fifth server: 'adm1'.
 $ vagrant up
 ```
 
-## Things To Try:
+### Things To Try:
 * The TodoMVC app - http://192.168.11.21 (or any other LB IP like: .22).
 * Consul service discovery/health UI - http://192.168.11.5:8500/ui
 * Stopping a webapp:
